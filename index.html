@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hanabi Helper</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="card-container">
+      <div v-for="(card, index) in cards" :key="index" class="card">
+        <input type="checkbox" v-bind:id="'card-' + index" v-bind:value="index" v-model="selectedCards">
+        <div class="card-wrapper">
+          <img class="card-background" src="cardback.jpg">
+          <div class="card-content">
+            <div class="card-values">
+              <span v-for="number in card.numbers" :key="number.id" class="possible-value number" :class="{ hidden: !number.possible }">
+                {{number.id}}
+              </span>
+            </div>
+            <div class="card-values">
+              <span v-for="color in card.colors" :key="color.id" class="possible-value" :class="{ hidden: !color.possible }" :style="{ 'background-color': color.id }"></span>
+            </div>
+          </div>
+        </div>
+        <span class="play-wrapper">
+          <button @click="playCard(index)">Play</button>
+        </span>
+      </div>
+    </div>
+
+    <div class="clue-controls">
+      <select v-model="selectedClue">
+        <optgroup v-for="(option, key) in CLUE_OPTIONS" v-bind:label="key">
+          <option v-for="sub in option" v-bind:value="sub.id">{{sub.value}}</option>
+        </optgroup>
+      </select>
+      <button @click="clue()" :disabled="selectedCards.length == 0">Choose value</button>
+      <button @click="antiClue()" :disabled="selectedCards.length == 0">Eliminate value</button>
+    </div>
+
+    <div class="undo" v-if="history.length > 0">
+      <button @click="restore()">Undo</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

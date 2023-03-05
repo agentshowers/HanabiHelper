@@ -1,0 +1,73 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-wrapper {
+  padding: 10px;
+  margin: 10px;
+  border: 2px black solid;
+  border-radius: 10px;
+  width: 100px;
+  position: relative;
+}
+
+.card-background {
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-content {
+  position: relative;
+}
+
+.card-values {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.possible-value {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  border-radius: 10px;
+  border: 1px black solid;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: peachpuff;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.play-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.clue-controls {
+  margin-top: 10px;
+}
+
+.undo {
+  margin-top: 10px;
+}
